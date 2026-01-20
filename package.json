@@ -4,7 +4,6 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run -w react-frontend dev",
-    "dev": "npm run -w react-frontend dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
 	
