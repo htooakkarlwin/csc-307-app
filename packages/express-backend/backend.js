@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
 
 app.listen(port, () => {
   console.log(
-    'Example app listening at http://localhost:${port}'
+    `Example app listening at http://localhost:${port}`
   );
 });
 
@@ -48,10 +48,22 @@ const users = {
 };
 
 const findUserByName = (name) => {
-  return users["users_list"].filter(
-    (user) => user["name"] === name
+  return users.users_list.filter(
+    (user) => user.name === name
   );
 };
+
+app.delete("/users", (req, res) => {
+  const name = req.query.name;
+  if (name != undefined)
+  {
+      let result = users.users_list.filter(
+      (user) => user.name !== name
+    );
+    users.users_list = result;
+    res.send();
+  }
+});
 
 app.get("/users", (req, res) => {
   const name = req.query.name;
@@ -78,7 +90,7 @@ app.get("/users/:id", (req, res) => {
 });
 
 const addUser = (user) => {
-  users["users_list"].push(user);
+  users.users_list.push(user);
   return user;
 };
 
